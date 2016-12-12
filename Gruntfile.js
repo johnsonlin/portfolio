@@ -6,21 +6,38 @@ grunt.initConfig({
   copy: {
     main: {
       files: [
-        // includes files within path
-        {expand: true, flatten: true, src: ['src/*.html'], dest: 'dist/', filter: 'isFile'}
+        {expand: true, src: ['assets/**/*'], dest: 'dist/'}
       ]
     }
   },
   sass: {
-    options: {
-      sourceMap: true
-    },
-    dist: {
+    dev: {
+      options: {
+        sourceMap: true
+      },
       files: {
         'dist/css/styles.css': 'src/sass/styles.scss'
+      }
+    },
+    build: {
+      options: {
+        outputStyle: 'compressed'
+      },
+      files: {
+        'dist/css/styles.css': 'src/sass/styles.scss'
+      }
+    }
+  },
+  watch: {
+    dev: {
+      files: ['**/*.scss'],
+      tasks: ['sass:dev'],
+      options: {
+        spawn: false
       }
     }
   }
 });
 
-grunt.registerTask('default', ['sass', 'copy']);
+grunt.registerTask('default', ['sass:dev', 'copy']);
+grunt.registerTask('build', ['sass:build', 'copy']);
