@@ -8,6 +8,7 @@
     "dev": "npm run init && concurrently \"webpack-dev-server\" \"grunt watch\"",
     "build": "npm run init && npm run webpack-prod && grunt build",
     "start": "npm run build && node server",
+    "serve": "node server",
     "test": "karma start",
     "webpack": "webpack",
     "webpack-dev-server": "webpack-dev-server",
