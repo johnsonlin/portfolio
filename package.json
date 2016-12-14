@@ -12,7 +12,8 @@
     "test": "karma start",
     "webpack": "webpack",
     "webpack-dev-server": "webpack-dev-server",
-    "webpack-prod": "webpack --config config/webpack.prod.js"
+    "webpack-prod": "webpack --config config/webpack.prod.js",
+    "heroku-postbuild": "npm run build"
   },
   "repository": {
     "type": "git",
