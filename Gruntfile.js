@@ -1,4 +1,5 @@
 var grunt = require('grunt');
+var teldeImporter = require('grunt-sass-tilde-importer');
 
 require('load-grunt-tasks')(grunt);
 
@@ -6,13 +7,15 @@ grunt.initConfig({
   copy: {
     main: {
       files: [
-        {expand: true, src: ['assets/**/*'], dest: 'dist/'}
+        {expand: true, src: ['assets/**/*'], dest: 'dist/'},
+        {src: '_redirects', dest: 'dist/_redirects'}
       ]
     }
   },
   sass: {
     dev: {
       options: {
+        importer: teldeImporter,
         sourceMap: true
       },
       files: {
@@ -21,6 +24,7 @@ grunt.initConfig({
     },
     build: {
       options: {
+        importer: teldeImporter,
         outputStyle: 'compressed'
       },
       files: {

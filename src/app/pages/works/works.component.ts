@@ -17,7 +17,6 @@ export class WorkspageComponent implements OnInit {
   constructor(private service: WorksService) {}
 
   ngOnInit() {
-    console.log(123);
     this.service.getWorks()
       .then(projects => {
         // console.log(projects);

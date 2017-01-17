@@ -1,6 +1,6 @@
 <h1>Works</h1>
-<ul>
-  <li *ngFor="let project of projects">
+<md-grid-list cols="4" rowHeight="200px">
+  <md-grid-tile *ngFor="let project of projects">
     <project [project]="project"></project>
-  </li>
-</ul>
+  </md-grid-tile>
+</md-grid-list>

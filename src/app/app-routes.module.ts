@@ -3,6 +3,8 @@ import {Routes, RouterModule} from "@angular/router";
 
 import {HomepageComponent} from './pages/home/home.component';
 import {WorkspageComponent} from './pages/works/works.component';
+import {SkillspageComponent} from './pages/skills/skills.component';
+import {ContactpageComponent} from './pages/contact/contact.component';
 
 export const appRoutes: Routes = [
   {
@@ -17,6 +19,14 @@ export const appRoutes: Routes = [
   {
     path: 'works',
     component: WorkspageComponent
+  },
+  {
+    path: 'skills',
+    component: SkillspageComponent
+  },
+  {
+    path: 'contact',
+    component: ContactpageComponent
   }
 ];
 

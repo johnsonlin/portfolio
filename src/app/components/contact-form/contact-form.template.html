@@ -1,0 +1,25 @@
+<form #contactForm="ngForm" name="contactInfo" (ngSubmit)="submitForm()">
+  <p>
+    <md-input-container>
+      <input type="text" md-input placeholder="Full Name" name="fullName" required [(ngModel)]="contactInfo.fullName">
+    </md-input-container>
+  </p>
+
+  <p>
+    <md-input-container>
+      <input type="text" md-input placeholder="Email" name="email" required [(ngModel)]="contactInfo.email">
+    </md-input-container>
+  </p>
+
+  <p>
+    <md-input-container>
+      <textarea md-input placeholder="Message" name="message" cols="30" rows="10" maxlength="140" #message required [(ngModel)]="contactInfo.message"></textarea>
+      <md-hint align="end">{{message.value.length}} / 140</md-hint>
+    </md-input-container>
+  </p>
+
+  <p>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+  </p>
+</form>

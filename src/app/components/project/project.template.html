@@ -1,2 +1,6 @@
-<h2 [innerHTML]="project.title"></h2>
-<img [src]="getImage()" [alt]="project.title">
+<figure class="project__image-container">
+  <img class="project__image" [src]="getImage()" [alt]="project.title">
+  <md-grid-tile-footer>
+    <h3 md-line class="project__title" [innerHTML]="project.title"></h3>
+  </md-grid-tile-footer>
+</figure>
