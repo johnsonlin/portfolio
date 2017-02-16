@@ -1,6 +1,6 @@
 import { browser, element, by } from 'protractor';
 
-export class JohnsonlinPage {
+export class TaasFrontendPage {
   navigateTo() {
     return browser.get('/');
   }

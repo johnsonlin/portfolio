@@ -3,6 +3,7 @@
 @import 'variables';
 @import 'frameworks/frameworks';
 @import 'theme';
+@import 'typography';
 @import 'mixins';
 
 html {
@@ -11,7 +12,6 @@ html {
 }
 
 body {
-  font-family: Roboto, Arial, sans-serif;
   margin: 0;
   padding: 0;
   position: relative;
@@ -20,7 +20,7 @@ body {
 
 main {
   display: block;
-  padding: 0 20px;
+  padding: 20px;
 }
 
 app-root {
@@ -30,14 +30,19 @@ app-root {
   flex-direction: column;
 }
 
-.app-body {
+.main-body {
   flex-grow: 1;
+
+  .mat-sidenav-content {
+    @include position(absolute, null 0px null 0px);
+  }
 }
 
 .main-nav {
-  background: map-get($md-cyan, 500);
+  background: map-get($mat-cyan, 500);
   padding: 8px 16px;
   display: flex;
+  flex: 0 0 auto;
 
   .nav-item {
     color: #fff;
@@ -70,7 +75,7 @@ app-root {
 
   &__list-item {
     &:not(last-child) {
-      border-bottom: 1px solid map-get($md-grey, 500);
+      border-bottom: 1px solid map-get($mat-grey, 500);
     }
 
     .nav-item {
@@ -83,4 +88,8 @@ app-root {
 
 .side-nav {
   width: 200px;
+}
+
+.main-content {
+  @include position(absolute, null 0px null 0px);
 }

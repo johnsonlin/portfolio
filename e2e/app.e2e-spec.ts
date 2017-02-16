@@ -1,10 +1,10 @@
-import { JohnsonlinPage } from './app.po';
+import { TaasFrontendPage } from './app.po';
 
-describe('johnsonlin App', function() {
-  let page: JohnsonlinPage;
+describe('taas-frontend App', () => {
+  let page: TaasFrontendPage;
 
   beforeEach(() => {
-    page = new JohnsonlinPage();
+    page = new TaasFrontendPage();
   });
 
   it('should display message saying app works', () => {

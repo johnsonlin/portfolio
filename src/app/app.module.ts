@@ -27,7 +27,7 @@ import { ContactpageComponent } from './pages/contactpage/contact.component';
     BrowserModule,
     FormsModule,
     HttpModule,
-    MaterialModule.forRoot(),
+    MaterialModule,
     AppRoutesModule
   ],
   providers: [],

@@ -1,13 +1,13 @@
-<md-sidenav-container class="app-body">
-  <nav class="main-nav">
-    <button class="main-nav__toggle" (click)="sidenav.open()" md-button><md-icon>menu</md-icon></button>
+<nav class="main-nav">
+  <button class="main-nav__toggle" (click)="sidenav.toggle()" md-button><md-icon>menu</md-icon></button>
 
-    <a class="nav-item" routerLink="/" md-button><md-icon>home</md-icon> Home</a>
-    <a class="nav-item" routerLink="/works" md-button><md-icon>work</md-icon> Works</a>
-    <a class="nav-item" routerLink="/skills" md-button><md-icon>format_align_left</md-icon> Skills</a>
-    <a class="nav-item" routerLink="/contact" md-button><md-icon>message</md-icon> Contact</a>
-  </nav>
+  <a class="nav-item" routerLink="/" md-button><md-icon>home</md-icon> Home</a>
+  <a class="nav-item" routerLink="/works" md-button><md-icon>work</md-icon> Works</a>
+  <a class="nav-item" routerLink="/skills" md-button><md-icon>format_align_left</md-icon> Skills</a>
+  <a class="nav-item" routerLink="/contact" md-button><md-icon>message</md-icon> Contact</a>
+</nav>
 
+<md-sidenav-container class="main-body">
   <md-sidenav #sidenav class="side-nav">
     <nav class="main-nav-mobile">
       <ul class="main-nav-mobile__list">
@@ -35,7 +35,7 @@
     </nav>
   </md-sidenav>
 
-  <main>
+  <main class="main-content">
     <router-outlet></router-outlet>
   </main>
 </md-sidenav-container>
