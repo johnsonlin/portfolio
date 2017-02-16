@@ -1,0 +1,11 @@
+@mixin screenAboveMobile {
+  @media screen and (min-width: $mobile-break-point + 1) {
+    @content;
+  }
+}
+
+@mixin screenMobile {
+  @media screen and (max-width: $mobile-break-point) {
+
+  }
+}

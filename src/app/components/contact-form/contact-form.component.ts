@@ -4,7 +4,8 @@ import {ContactInfoModel} from '../../models/contact-info.model';
 
 @Component({
   selector: 'contact-form',
-  templateUrl: './contact-form.template.html'
+  templateUrl: './contact-form.component.html',
+  styleUrls: ['./contact-form.component.scss']
 })
 
 export class ContactFormComponent {

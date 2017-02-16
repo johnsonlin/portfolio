@@ -1,6 +1,6 @@
 <figure class="project__image-container">
   <img class="project__image" [src]="getImage()" [alt]="project.title">
   <md-grid-tile-footer>
-    <h3 md-line class="project__title" [innerHTML]="project.title"></h3>
+    <h3 md-line class="project__title" [innerHTML]="project.title" (click)="showDialog(project)"></h3>
   </md-grid-tile-footer>
 </figure>

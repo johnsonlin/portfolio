@@ -1,10 +1,10 @@
 import {NgModule} from "@angular/core";
 import {Routes, RouterModule} from "@angular/router";
 
-import {HomepageComponent} from './pages/home/home.component';
-import {WorkspageComponent} from './pages/works/works.component';
-import {SkillspageComponent} from './pages/skills/skills.component';
-import {ContactpageComponent} from './pages/contact/contact.component';
+import {HomepageComponent} from '../pages/homepage/home.component';
+import {WorkspageComponent} from '../pages/workspage/works.component';
+import {SkillspageComponent} from '../pages/skillspage/skills.component';
+import {ContactpageComponent} from '../pages/contactpage/contact.component';
 
 export const appRoutes: Routes = [
   {

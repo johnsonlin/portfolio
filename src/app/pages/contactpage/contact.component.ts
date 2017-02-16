@@ -5,7 +5,7 @@ import {ContactInfoModel} from '../../models/contact-info.model';
 
 @Component({
   selector: 'contactpage',
-  templateUrl: './contact.template.html',
+  templateUrl: './contact.component.html',
   providers: [
     ContactService
   ]

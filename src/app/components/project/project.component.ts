@@ -5,7 +5,7 @@ import {PROJECT_IMAGE_WIDTH} from '../../app-constants';
 
 @Component({
   selector: 'project',
-  templateUrl: './project.template.html'
+  templateUrl: './project.component.html'
 })
 
 export class ProjectComponent {

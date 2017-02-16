@@ -1,10 +1,86 @@
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
 
+@import 'variables';
 @import 'frameworks/frameworks';
 @import 'theme';
+@import 'mixins';
+
+html {
+  width: 100%;
+  height: 100%;
+}
 
 body {
   font-family: Roboto, Arial, sans-serif;
   margin: 0;
   padding: 0;
+  position: relative;
+  min-height: 100%;
+}
+
+main {
+  display: block;
+  padding: 0 20px;
+}
+
+app-root {
+  @include position(absolute, 0px 0px 0px 0px);
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-body {
+  flex-grow: 1;
+}
+
+.main-nav {
+  background: map-get($md-cyan, 500);
+  padding: 8px 16px;
+  display: flex;
+
+  .nav-item {
+    color: #fff;
+    display: none;
+  }
+
+  .main-nav__toggle {
+    color: #fff;
+    min-width: 50px;
+    padding: 0 5px;
+  }
+
+  @include screenAboveMobile {
+    .nav-item {
+      display: inline-block;
+    }
+
+    .main-nav__toggle {
+      display: none;
+    }
+  }
+}
+
+.main-nav-mobile {
+  &__list {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__list-item {
+    &:not(last-child) {
+      border-bottom: 1px solid map-get($md-grey, 500);
+    }
+
+    .nav-item {
+      width: 100%;
+      padding: 0 16px;
+      text-align: left;
+    }
+  }
+}
+
+.side-nav {
+  width: 200px;
 }

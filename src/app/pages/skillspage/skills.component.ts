@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'skillspage',
-  templateUrl: './skills.template.html'
+  templateUrl: './skills.component.html'
 })
 
 export class SkillspageComponent implements OnInit {

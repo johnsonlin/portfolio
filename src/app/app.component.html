@@ -1,0 +1,41 @@
+<md-sidenav-container class="app-body">
+  <nav class="main-nav">
+    <button class="main-nav__toggle" (click)="sidenav.open()" md-button><md-icon>menu</md-icon></button>
+
+    <a class="nav-item" routerLink="/" md-button><md-icon>home</md-icon> Home</a>
+    <a class="nav-item" routerLink="/works" md-button><md-icon>work</md-icon> Works</a>
+    <a class="nav-item" routerLink="/skills" md-button><md-icon>format_align_left</md-icon> Skills</a>
+    <a class="nav-item" routerLink="/contact" md-button><md-icon>message</md-icon> Contact</a>
+  </nav>
+
+  <md-sidenav #sidenav class="side-nav">
+    <nav class="main-nav-mobile">
+      <ul class="main-nav-mobile__list">
+        <li class="main-nav-mobile__list-item">
+          <a class="nav-item" routerLink="/" (click)="sidenav.close()" md-button>
+            <md-icon>home</md-icon> Home
+          </a>
+        </li>
+        <li class="main-nav-mobile__list-item">
+          <a class="nav-item" routerLink="/works" (click)="sidenav.close()" md-button>
+            <md-icon>work</md-icon> Works
+          </a>
+        </li>
+        <li class="main-nav-mobile__list-item">
+          <a class="nav-item" routerLink="/skills" (click)="sidenav.close()" md-button>
+            <md-icon>format_align_left</md-icon> Skills
+          </a>
+        </li>
+        <li class="main-nav-mobile__list-item">
+          <a class="nav-item" routerLink="/contact" (click)="sidenav.close()" md-button>
+            <md-icon>message</md-icon> Contact
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </md-sidenav>
+
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+</md-sidenav-container>

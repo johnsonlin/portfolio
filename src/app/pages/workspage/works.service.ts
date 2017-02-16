@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
+import 'rxjs/add/operator/toPromise';
 
 import {ProjectModel} from "../../models/project.model";
 import {WORKS_API} from '../../app-constants';
