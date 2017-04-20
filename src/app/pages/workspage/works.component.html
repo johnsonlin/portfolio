@@ -2,6 +2,6 @@
 <md-spinner mode="indeterminate" [style.display]="projects.length ? 'none' : 'block'"></md-spinner>
 <md-grid-list [cols]="gridSettings.cols" rowHeight="200px" *ngIf="projects.length">
   <md-grid-tile *ngFor="let project of projects">
-    <project [project]="project"></project>
+    <project [project]="project" (click)="showProjectDetails(project)"></project>
   </md-grid-tile>
 </md-grid-list>

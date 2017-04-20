@@ -1,8 +1,7 @@
-import {Injectable} from "@angular/core";
-import {Http} from "@angular/http";
-import 'rxjs/add/operator/toPromise';
+import {Injectable} from '@angular/core';
+import {Http} from '@angular/http';
 
-import {ProjectModel} from "../../models/project.model";
+import {ProjectModel} from '../../models/project.model';
 import {WORKS_API} from '../../app-constants';
 
 @Injectable()
@@ -16,7 +15,7 @@ export class WorksService {
       .toPromise()
       .then(response => response.json().posts as ProjectModel[])
       .catch(error => {
-        return Promise.reject(error.message || error)
+        return Promise.reject(error.message || error);
       });
   }
 }

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
+import { MdDialog } from '@angular/material';
+import { Observable, Subscription } from 'rxjs/Rx';
 
 import { MOBILE_BREAK_POINT, GRID_COLS_DESKTOP, GRID_COLS_MOBILE } from '../../app-constants';
-import { ProjectModel } from "../../models/project.model";
-import { WorksService } from "./works.service";
+import { ProjectModel } from '../../models/project.model';
+import { WorksService } from './works.service';
+import { ProjectDetailsComponent } from '../../components/project-details/project-details.component';
 
 @Component({
   selector: 'workspage',
@@ -19,14 +21,13 @@ export class WorkspageComponent implements OnInit {
   gridSettings: any = {cols: GRID_COLS_MOBILE};
   routeChanging$: Observable<NavigationStart>;
 
-  constructor(private service: WorksService, private router: Router) {}
+  constructor(private service: WorksService, private router: Router, private dialog: MdDialog) {}
 
   ngOnInit() {
     this.service.getWorks()
       .then(projects => {
-        this.projects = projects.map((project) => {
-          return project;
-        });
+        console.log(projects);
+        this.projects = projects;
       });
 
     this.routeChanging$ = this.router.events.filter(e => e instanceof NavigationStart);
@@ -40,5 +41,11 @@ export class WorkspageComponent implements OnInit {
       .subscribe((innerWidth) => {
         this.gridSettings.cols = innerWidth > MOBILE_BREAK_POINT ? GRID_COLS_DESKTOP : GRID_COLS_MOBILE;
       });
+  }
+
+  showProjectDetails(project) {
+    this.dialog.open(ProjectDetailsComponent, {
+      data: project
+    });
   }
 }
