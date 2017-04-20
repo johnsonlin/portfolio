@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import {ProjectModel} from '../../models/project.model';
-import {PROJECT_IMAGE_WIDTH} from '../../app-constants';
 
 @Component({
   selector: 'project',
@@ -13,7 +12,8 @@ export class ProjectComponent implements OnInit {
   projectModel: ProjectModel;
 
   ngOnInit() {
-    this.projectModel = new ProjectModel(this.project);
+    // this.projectModel = new ProjectModel(this.project);
+    this.projectModel = this.project;
   }
 
 }

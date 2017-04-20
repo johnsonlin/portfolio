@@ -6,10 +6,9 @@ export class ProjectModel {
   featured_image?: string;
   excerpt: string;
 
-  constructor(project) {
-    Object.assign(this, project);
-    console.log(this);
-  }
+  /*constructor(project) {
+    // Object.assign(this, project);
+  }*/
 
   getImage() {
     let featuredImage = this.featured_image ? `${this.featured_image}?w=${PROJECT_IMAGE_WIDTH}` : null;
