@@ -1,10 +1,10 @@
-import { TaasFrontendPage } from './app.po';
+import { PortfolioPage } from './app.po';
 
-describe('taas-frontend App', () => {
-  let page: TaasFrontendPage;
+describe('portfolio App', () => {
+  let page: PortfolioPage;
 
   beforeEach(() => {
-    page = new TaasFrontendPage();
+    page = new PortfolioPage();
   });
 
   it('should display message saying app works', () => {
