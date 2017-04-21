@@ -4,7 +4,7 @@ import {ContactService} from './contact.service';
 import {ContactInfoModel} from '../../models/contact-info.model';
 
 @Component({
-  selector: 'contactpage',
+  selector: 'app-contactpage',
   templateUrl: './contact.component.html',
   providers: [
     ContactService

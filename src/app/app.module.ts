@@ -7,24 +7,24 @@ import { HttpModule } from '@angular/http';
 import { MaterialModule } from './material/material.module';
 import { AppRoutesModule } from './app-routes/app-routes.module';
 import { AppComponent } from './app.component';
-import { ProjectComponent } from './components/project/project.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { HomepageComponent } from './pages/homepage/home.component';
 import { WorkspageComponent } from './pages/workspage/works.component';
 import { SkillspageComponent } from './pages/skillspage/skills.component';
 import { ContactpageComponent } from './pages/contactpage/contact.component';
-import { ProjectDetailsComponent } from './components/project-details/project-details.component';
+import { ProjectDialogComponent } from './components/project-dialog/project-dialog.component';
+import { ProjectTileComponent } from './components/project-tile/project-tile.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProjectComponent,
     ContactFormComponent,
     HomepageComponent,
     WorkspageComponent,
     SkillspageComponent,
     ContactpageComponent,
-    ProjectDetailsComponent
+    ProjectDialogComponent,
+    ProjectTileComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +35,7 @@ import { ProjectDetailsComponent } from './components/project-details/project-de
     AppRoutesModule
   ],
   entryComponents: [
-    ProjectDetailsComponent
+    ProjectDialogComponent
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,0 +1,13 @@
+@import '../../../sass/variables';
+@import '../../../sass/mixins';
+
+.project-dialog__close {
+  float: right;
+}
+
+.project-dialog__content {
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+}

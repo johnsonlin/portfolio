@@ -6,10 +6,10 @@ import { Observable, Subscription } from 'rxjs/Rx';
 import { MOBILE_BREAK_POINT, GRID_COLS_DESKTOP, GRID_COLS_MOBILE } from '../../app-constants';
 import { ProjectModel } from '../../models/project.model';
 import { WorksService } from './works.service';
-import { ProjectDetailsComponent } from '../../components/project-details/project-details.component';
+import { ProjectDialogComponent } from '../../components/project-dialog/project-dialog.component';
 
 @Component({
-  selector: 'workspage',
+  selector: 'app-workspage',
   templateUrl: './works.component.html',
   providers: [
     WorksService
@@ -26,7 +26,6 @@ export class WorkspageComponent implements OnInit {
   ngOnInit() {
     this.service.getWorks()
       .then(projects => {
-        console.log(projects);
         this.projects = projects;
       });
 
@@ -44,7 +43,7 @@ export class WorkspageComponent implements OnInit {
   }
 
   showProjectDetails(project) {
-    this.dialog.open(ProjectDetailsComponent, {
+    this.dialog.open(ProjectDialogComponent, {
       data: project
     });
   }
