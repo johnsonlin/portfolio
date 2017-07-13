@@ -10,7 +10,6 @@ import {ContactInfoModel} from '../../models/contact-info.model';
     ContactService
   ]
 })
-
 export class ContactpageComponent implements OnInit {
 
   constructor(private service: ContactService) {}
@@ -20,11 +19,12 @@ export class ContactpageComponent implements OnInit {
   }
 
   submitForm(formData: ContactInfoModel) {
-    this.service.sendMessage(formData.fullName, formData.email, formData.message)
+    console.log('submitForm', formData);
+    /*this.service.sendMessage(formData.fullName, formData.email, formData.message)
       .then(() => {
         console.log('sent');
       }, (error) => {
         console.warn(error);
-      });
+      });*/
   }
 }

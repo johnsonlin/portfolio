@@ -1,5 +1,5 @@
 <h1>Works</h1>
-<md-spinner mode="indeterminate" [style.display]="projects.length ? 'none' : 'block'"></md-spinner>
+<md-progress-bar mode="indeterminate" [style.display]="projects.length ? 'none' : 'block'"></md-progress-bar>
 <md-grid-list [cols]="gridSettings.cols" rowHeight="200px" *ngIf="projects.length">
   <md-grid-tile *ngFor="let project of projects">
     <app-project-tile [project]="project" (click)="showProjectDetails(project)"></app-project-tile>

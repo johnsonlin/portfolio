@@ -1,2 +1,61 @@
-<h1>Home</h1>
-<a href="http://codepen.io/johnsonlin/full/adwqoY/">TinyMCE</a>
+<div class="cube-container">
+  <section class="cube" #cube>
+    <div class="cube-side cube-side__intro">
+      <div class="cube-side__content">
+        <h1><small>Hi, I'm</small> Johnson Lin</h1>
+        <p>I'm a frontend engineer in Sydney.</p>
+      </div>
+    </div>
+    <div class="cube-side cube-side__description">
+      <div class="cube-side__content">
+        <p>I'm specialised in frontend technologies and popular JS frameworks such as <a href="#" target="_blank">Angular</a>.</p>
+      </div>
+    </div>
+    <div class="cube-side cube-side__skillset">
+      <div class="cube-side__content">
+        <p>View my <a href="#">skillset</a></p>
+      </div>
+    </div>
+    <div class="cube-side cube-side__works">
+      <div class="cube-side__content">
+        <p>View my <a href="#">works</a></p>
+      </div>
+    </div>
+    <div class="cube-side cube-side__contact">
+      <div class="cube-side__content">
+        <p><a href="#">Contact me</a></p>
+      </div>
+    </div>
+    <div class="cube-side cube-side__nothing">
+      <div class="cube-side__content">
+        <p>There's nothing on this side.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="cube-control">
+  <button md-mini-fab (click)="controlVisible = !controlVisible">
+    <md-icon>3d_rotation</md-icon>
+  </button>
+  <button md-mini-fab class="cube-control__rotate-up"
+          [style.display]="controlVisible ? 'block' : 'none'"
+          (click)="rotateUp()">
+    <md-icon>keyboard_arrow_up</md-icon>
+  </button>
+  <button md-mini-fab class="cube-control__rotate-right"
+          [style.display]="controlVisible ? 'block' : 'none'"
+          (click)="rotateRight()">
+    <md-icon>keyboard_arrow_right</md-icon>
+  </button>
+  <button md-mini-fab class="cube-control__rotate-down"
+          [style.display]="controlVisible ? 'block' : 'none'"
+          (click)="rotateDown()">
+    <md-icon>keyboard_arrow_down</md-icon>
+  </button>
+  <button md-mini-fab class="cube-control__rotate-left"
+          [style.display]="controlVisible ? 'block' : 'none'"
+          (click)="rotateLeft()">
+    <md-icon>keyboard_arrow_left</md-icon>
+  </button>
+</div>

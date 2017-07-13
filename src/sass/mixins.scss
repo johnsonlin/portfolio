@@ -4,8 +4,20 @@
   }
 }
 
+@mixin screenAboveTablet {
+  @media screen and (min-width: $tablet-break-point + 1) {
+    @content;
+  }
+}
+
+@mixin screenTablet {
+  @media screen and (min-width: $mobile-break-point + 1) and (max-width: $tablet-break-point) {
+    @content;
+  }
+}
+
 @mixin screenMobile {
   @media screen and (max-width: $mobile-break-point) {
-
+    @content;
   }
 }

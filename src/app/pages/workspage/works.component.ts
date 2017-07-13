@@ -15,7 +15,6 @@ import { ProjectDialogComponent } from '../../components/project-dialog/project-
     WorksService
   ]
 })
-
 export class WorkspageComponent implements OnInit {
   projects: ProjectModel[] = [];
   gridSettings: any = {cols: GRID_COLS_MOBILE};

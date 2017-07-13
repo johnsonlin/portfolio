@@ -1,4 +1,4 @@
-<form #contactForm="ngForm" name="contactInfo" (ngSubmit)="submitForm()">
+<form #contactForm="ngForm" name="contactInfo" (ngSubmit)="submitForm(contactForm)">
   <p>
     <md-input-container>
       <input type="text" mdInput placeholder="Full Name" name="fullName" required [(ngModel)]="contactInfo.fullName">
@@ -19,7 +19,7 @@
   </p>
 
   <p>
-    <button type="submit">Submit</button>
-    <button type="reset">Reset</button>
+    <button md-raised-button type="submit">Submit</button>
+    <button md-button type="reset">Reset</button>
   </p>
 </form>

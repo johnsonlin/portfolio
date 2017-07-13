@@ -1,14 +1,15 @@
 import { NgModule } from '@angular/core';
 import {
-  MdSidenavModule, MdProgressSpinnerModule, MdButtonModule, MdIconModule,
-  MdInputModule, MdGridListModule, MdDialogModule
+  MdSidenavModule, MdProgressBarModule, MdButtonModule, MdIconModule,
+  MdInputModule, MdGridListModule, MdDialogModule, MdButtonToggleModule
 } from '@angular/material';
 
 @NgModule({
   imports: [
     MdSidenavModule,
-    MdProgressSpinnerModule,
+    MdProgressBarModule,
     MdButtonModule,
+    MdButtonToggleModule,
     MdIconModule,
     MdInputModule,
     MdGridListModule,
@@ -16,8 +17,9 @@ import {
   ],
   exports: [
     MdSidenavModule,
-    MdProgressSpinnerModule,
+    MdProgressBarModule,
     MdButtonModule,
+    MdButtonToggleModule,
     MdIconModule,
     MdInputModule,
     MdGridListModule,
