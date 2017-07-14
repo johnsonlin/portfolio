@@ -80,12 +80,13 @@ $nothing-rotation: rotateX(180deg);
   .cube-container {
     @include size($cube-size-mobile);
     cursor: pointer;
-    margin: 130px auto 50px;
+    margin: 50px auto;
     perspective: 1750px;
     user-select: none;
 
     @include screenAboveTablet {
       @include size($cube-size-desktop);
+      margin-top: 130px;
     }
     @include screenTablet {
       @include size($cube-size-tablet);
@@ -97,6 +98,10 @@ $nothing-rotation: rotateX(180deg);
     display: block;
     margin: ($cube-control-size + 10px) 0 $cube-control-size ($cube-control-size - 10px);
     position: relative;
+
+    &__handle {
+      transition: opacity .3s ease;
+    }
 
     &__rotate-up {
       @include position(absolute, null null calc(100% + 5px) null);

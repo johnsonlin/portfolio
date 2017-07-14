@@ -8,22 +8,24 @@
     </div>
     <div class="cube-side cube-side__description">
       <div class="cube-side__content">
-        <p>I'm specialised in frontend technologies and popular JS frameworks such as <a href="#" target="_blank">Angular</a>.</p>
+        <p>I'm specialised in frontend technologies and popular JS frameworks such as
+          <a href="https://angular.io/" target="_blank">Angular</a>.
+        </p>
       </div>
     </div>
     <div class="cube-side cube-side__skillset">
       <div class="cube-side__content">
-        <p>View my <a href="#">skillset</a></p>
+        <p>View my <a routerLink="/skills">skillset</a></p>
       </div>
     </div>
     <div class="cube-side cube-side__works">
       <div class="cube-side__content">
-        <p>View my <a href="#">works</a></p>
+        <p>View my <a routerLink="/works">works</a></p>
       </div>
     </div>
     <div class="cube-side cube-side__contact">
       <div class="cube-side__content">
-        <p><a href="#">Contact me</a></p>
+        <p><a routerLink="/contact">Contact me</a></p>
       </div>
     </div>
     <div class="cube-side cube-side__nothing">
@@ -38,23 +40,23 @@
   <button md-mini-fab (click)="controlVisible = !controlVisible">
     <md-icon>3d_rotation</md-icon>
   </button>
-  <button md-mini-fab class="cube-control__rotate-up"
-          [style.display]="controlVisible ? 'block' : 'none'"
+  <button md-mini-fab class="cube-control__handle cube-control__rotate-up"
+          [style.opacity]="controlVisible ? 1 : 0"
           (click)="rotateUp()">
     <md-icon>keyboard_arrow_up</md-icon>
   </button>
-  <button md-mini-fab class="cube-control__rotate-right"
-          [style.display]="controlVisible ? 'block' : 'none'"
+  <button md-mini-fab class="cube-control__handle cube-control__rotate-right"
+          [style.opacity]="controlVisible ? 1 : 0"
           (click)="rotateRight()">
     <md-icon>keyboard_arrow_right</md-icon>
   </button>
-  <button md-mini-fab class="cube-control__rotate-down"
-          [style.display]="controlVisible ? 'block' : 'none'"
+  <button md-mini-fab class="cube-control__handle cube-control__rotate-down"
+          [style.opacity]="controlVisible ? 1 : 0"
           (click)="rotateDown()">
     <md-icon>keyboard_arrow_down</md-icon>
   </button>
-  <button md-mini-fab class="cube-control__rotate-left"
-          [style.display]="controlVisible ? 'block' : 'none'"
+  <button md-mini-fab class="cube-control__handle cube-control__rotate-left"
+          [style.opacity]="controlVisible ? 1 : 0"
           (click)="rotateLeft()">
     <md-icon>keyboard_arrow_left</md-icon>
   </button>

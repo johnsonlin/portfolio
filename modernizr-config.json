@@ -16,6 +16,7 @@
     "testStyles"
   ],
   "feature-detects": [
+    "touchevents",
     "css/transforms",
     "css/transformslevel2",
     "css/transforms3d",

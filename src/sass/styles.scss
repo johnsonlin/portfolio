@@ -39,53 +39,7 @@ app-root {
   }
 }
 
-.main-nav {
-  background: map-get($mat-cyan, 500);
-  padding: 8px 16px;
-  display: flex;
-  flex: 0 0 auto;
 
-  .nav-item {
-    color: #fff;
-    display: none;
-  }
-
-  .main-nav__toggle {
-    color: #fff;
-    min-width: 50px;
-    padding: 0 5px;
-  }
-
-  @include screenAboveMobile {
-    .nav-item {
-      display: inline-block;
-    }
-
-    .main-nav__toggle {
-      display: none;
-    }
-  }
-}
-
-.main-nav-mobile {
-  &__list {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  &__list-item {
-    &:not(last-child) {
-      border-bottom: 1px solid map-get($mat-grey, 500);
-    }
-
-    .nav-item {
-      width: 100%;
-      padding: 0 16px;
-      text-align: left;
-    }
-  }
-}
 
 .side-nav {
   width: 200px;

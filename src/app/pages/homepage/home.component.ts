@@ -26,7 +26,7 @@ export class HomepageComponent implements OnInit {
     }
   }
 
-  private cubeTransform() {
+  cubeTransform() {
     this.cube.nativeElement.style.transform = `rotateX(${this.rotateX}deg) rotateY(${this.rotateY}deg) rotateZ(${this.rotateZ}deg)`;
 
     this.routeChanging$ = this.router.events.filter(e => e instanceof NavigationStart);
@@ -35,21 +35,41 @@ export class HomepageComponent implements OnInit {
     const mouseup$ = Observable.fromEvent(document, 'mouseup').takeUntil(this.routeChanging$);
     const mousedrag$ = mousedown$.flatMap(() => mousemove$.takeUntil(mouseup$)).takeUntil(this.routeChanging$);
 
-    mousedown$.subscribe(this.moveStart.bind(this));
-    mousedrag$.subscribe((e: MouseEvent) => {
-      const rotateXOffset = this.mouseStartX - e.x;
-      const rotateYOffset = this.mouseStartY - e.y;
-
-      this.rotateZ += rotateXOffset / 100;
-      this.rotateX += rotateYOffset / 100;
-      this.cube.nativeElement.style.transform = `rotateX(${this.rotateX}deg) rotateY(${this.rotateY}deg) rotateZ(${this.rotateZ}deg)`;
-    });
+    mousedown$.subscribe((e: MouseEvent) => this.moveStart(e.x, e.y));
+    mousedrag$.subscribe((e: MouseEvent) => this.rotateCube(e.x, e.y));
     mouseup$.subscribe(this.moveEnd.bind(this));
+
+    this.bindTouchEvents();
   }
 
-  moveStart(e: MouseEvent) {
-    this.mouseStartX = e.x;
-    this.mouseStartY = e.y;
+  bindTouchEvents() {
+    if (Modernizr.touchevents) {
+      const touchstart$ = Observable.fromEvent(document, 'touchstart').takeUntil(this.routeChanging$);
+      const touchmove$ = Observable.fromEvent(document, 'touchmove').takeUntil(this.routeChanging$);
+      const touchend$ = Observable.fromEvent(document, 'touchend').takeUntil(this.routeChanging$);
+
+      touchstart$.subscribe((e: TouchEvent) => {
+        this.moveStart(e.touches[0].clientX, e.touches[0].clientY);
+      });
+      touchmove$.subscribe((e: TouchEvent) => {
+        this.rotateCube(e.touches[0].clientX, e.touches[0].clientY);
+      });
+      touchend$.subscribe((this.moveEnd.bind(this)));
+    }
+  }
+
+  rotateCube(x, y) {
+    const rotateXOffset = this.mouseStartX - x;
+    const rotateYOffset = this.mouseStartY - y;
+
+    this.rotateZ += rotateXOffset / 100;
+    this.rotateX += rotateYOffset / 100;
+    this.cube.nativeElement.style.transform = `rotateX(${this.rotateX}deg) rotateY(${this.rotateY}deg) rotateZ(${this.rotateZ}deg)`;
+  }
+
+  moveStart(x, y) {
+    this.mouseStartX = x;
+    this.mouseStartY = y;
     this.cube.nativeElement.classList.add('cube--moving');
   }
 

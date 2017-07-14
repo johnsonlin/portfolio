@@ -1,10 +1,32 @@
+@import '~@angular/material/theming';
 @import '../../../sass/variables';
 @import '../../../sass/mixins';
 
-md-input-container {
+md-input-container, md-progress-bar {
   width: 100%;
 
   @include screenAboveMobile {
     width: 50%;
+  }
+}
+
+.contact-form {
+  &__error {
+    color: map-get($mat-red, 500);
+  }
+
+  &__successful {
+    color: map-get($mat-green, 500);
+  }
+
+  &__tick {
+    width: 40px;
+    height: 40px;
+    font-size: 40px;
+    vertical-align: middle;
+  }
+
+  &__smile {
+    vertical-align: middle;
   }
 }

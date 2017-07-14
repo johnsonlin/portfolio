@@ -1,0 +1,31 @@
+@import '~@angular/material/theming';
+@import '../../../sass/variables';
+@import '../../../sass/mixins';
+
+.main-nav {
+  background: map-get($mat-cyan, 500);
+  padding: 8px 16px;
+  display: flex;
+  flex: 0 0 auto;
+
+  .nav-item {
+    color: #fff;
+    display: none;
+  }
+
+  .main-nav__toggle {
+    color: #fff;
+    min-width: 50px;
+    padding: 0 5px;
+  }
+
+  @include screenAboveMobile {
+    .nav-item {
+      display: inline-block;
+    }
+
+    .main-nav__toggle {
+      display: none;
+    }
+  }
+}

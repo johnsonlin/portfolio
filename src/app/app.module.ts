@@ -8,12 +8,14 @@ import { MaterialModule } from './material/material.module';
 import { AppRoutesModule } from './app-routes/app-routes.module';
 import { AppComponent } from './app.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
+import { ProjectDialogComponent } from './components/project-dialog/project-dialog.component';
+import { ProjectTileComponent } from './components/project-tile/project-tile.component';
+import { NavMenuComponent } from './components/nav-menu/nav-menu.component';
+import { MobileNavMenuComponent } from './components/mobile-nav-menu/mobile-nav-menu.component';
 import { HomepageComponent } from './pages/homepage/home.component';
 import { WorkspageComponent } from './pages/workspage/works.component';
 import { SkillspageComponent } from './pages/skillspage/skills.component';
 import { ContactpageComponent } from './pages/contactpage/contact.component';
-import { ProjectDialogComponent } from './components/project-dialog/project-dialog.component';
-import { ProjectTileComponent } from './components/project-tile/project-tile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { ProjectTileComponent } from './components/project-tile/project-tile.com
     SkillspageComponent,
     ContactpageComponent,
     ProjectDialogComponent,
-    ProjectTileComponent
+    ProjectTileComponent,
+    NavMenuComponent,
+    MobileNavMenuComponent
   ],
   imports: [
     BrowserModule,

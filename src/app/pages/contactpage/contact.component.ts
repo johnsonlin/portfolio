@@ -11,6 +11,8 @@ import {ContactInfoModel} from '../../models/contact-info.model';
   ]
 })
 export class ContactpageComponent implements OnInit {
+  submitSuccessful = false;
+  submitError: any;
 
   constructor(private service: ContactService) {}
 
@@ -19,12 +21,12 @@ export class ContactpageComponent implements OnInit {
   }
 
   submitForm(formData: ContactInfoModel) {
-    console.log('submitForm', formData);
-    /*this.service.sendMessage(formData.fullName, formData.email, formData.message)
+    this.service.sendMessage(formData.fullName, formData.email, formData.message)
       .then(() => {
-        console.log('sent');
-      }, (error) => {
-        console.warn(error);
-      });*/
+        this.submitSuccessful = true;
+      })
+      .catch((error) => {
+        this.submitError = error;
+      });
   }
 }

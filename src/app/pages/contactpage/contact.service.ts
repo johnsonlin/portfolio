@@ -10,7 +10,6 @@ export class ContactService {
   constructor(private http: Http) {}
 
   sendMessage(from: string, email: string, message: string) {
-    console.log(from, email, message, 'sending message');
     return this.http.post(this.sendMessageUrl, {from, email, message}).toPromise();
   }
 }

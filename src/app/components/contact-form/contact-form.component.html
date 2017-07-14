@@ -1,25 +1,57 @@
 <form #contactForm="ngForm" name="contactInfo" (ngSubmit)="submitForm(contactForm)">
-  <p>
-    <md-input-container>
-      <input type="text" mdInput placeholder="Full Name" name="fullName" required [(ngModel)]="contactInfo.fullName">
-    </md-input-container>
-  </p>
+  <ng-template #elseBlock>
+    <md-progress-bar
+      mode="indeterminate"
+      [style.display]="(submitting && !(submitSuccessful || submitError)) ? 'block' : 'none'">
+    </md-progress-bar>
+    <p class="contact-form__error" *ngIf="submitError">Something went wrong. Please try again.</p>
+    <p>
+      <md-input-container>
+        <input
+          type="text" mdInput placeholder="Full Name" name="fullName"
+          required [minlength]="3" [(ngModel)]="contactInfo.fullName" #fullName>
+        <md-error [hidden]="fullName.invalid">
+          Please enter your full name containing at lease <strong>3 characters</strong>
+        </md-error>
+      </md-input-container>
+    </p>
 
-  <p>
-    <md-input-container>
-      <input type="text" mdInput placeholder="Email" name="email" required [(ngModel)]="contactInfo.email">
-    </md-input-container>
-  </p>
+    <p>
+      <md-input-container>
+        <input
+          type="text" mdInput placeholder="Email" name="email"
+          required email [(ngModel)]="contactInfo.email" #email>
+        <md-error [hidden]="email.invalid">
+          Please enter a valid <strong>email</strong>
+        </md-error>
+      </md-input-container>
+    </p>
 
-  <p>
-    <md-input-container>
-      <textarea mdInput placeholder="Message" name="message" cols="30" rows="10" maxlength="140" #message required [(ngModel)]="contactInfo.message"></textarea>
-      <md-hint align="end">{{message.value.length}} / 140</md-hint>
-    </md-input-container>
-  </p>
+    <p>
+      <md-input-container>
+        <textarea
+          mdInput placeholder="Message" name="message" cols="30" rows="10" maxlength="140"
+          required [(ngModel)]="contactInfo.message" #message></textarea>
+        <md-hint align="end">{{message.value.length}} / 140</md-hint>
+        <md-error [hidden]="message.invalid">
+          Please enter your <strong>message</strong>
+        </md-error>
+      </md-input-container>
+    </p>
 
-  <p>
-    <button md-raised-button type="submit">Submit</button>
-    <button md-button type="reset">Reset</button>
-  </p>
+    <p>
+      <button
+        md-raised-button type="submit"
+        [disabled]="submitting && !(submitSuccessful || submitError)">
+        Submit
+      </button>
+      <button md-button type="reset">Reset</button>
+    </p>
+  </ng-template>
+
+  <div class="contact-form__successful" *ngIf="submitSuccessful; else elseBlock">
+    <md-icon class="contact-form__tick">check_circle</md-icon>
+    Sent! I'll be in touch shortly.
+    <md-icon class="contact-form__smile">sentiment_very_satisfied</md-icon>
+  </div>
 </form>
