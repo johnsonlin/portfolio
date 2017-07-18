@@ -6,6 +6,7 @@ import { SkillsService } from './skills.service';
 @Component({
   selector: 'app-skillspage',
   templateUrl: './skills.component.html',
+  styleUrls: ['./skills.component.scss'],
   providers: [SkillsService]
 })
 export class SkillspageComponent implements OnInit, AfterViewChecked {
@@ -51,6 +52,16 @@ export class SkillspageComponent implements OnInit, AfterViewChecked {
 
   drawChart(canvas, chartType, rawData) {
     const data = this.transformChartData(rawData.data);
+    const ticks = {
+      display: false,
+      beginAtZero: true,
+      stepSize: 1,
+      max: 5
+    };
+    const pointLabels = {
+      fontFamily: 'Roboto, Arial, sans-serif',
+      fontSize: 14
+    };
     let scaleOptions;
 
     switch (chartType) {
@@ -58,10 +69,8 @@ export class SkillspageComponent implements OnInit, AfterViewChecked {
         scaleOptions = {
           scales: {
             xAxes: [{
-              ticks: {
-                beginAtZero: true,
-                max: 5
-              }
+              ticks,
+              pointLabels
             }]
           }
         };
@@ -69,10 +78,8 @@ export class SkillspageComponent implements OnInit, AfterViewChecked {
       default:
         scaleOptions = {
           scale: {
-            ticks: {
-              beginAtZero: true,
-              max: 5
-            }
+            ticks,
+            pointLabels
           }
         };
         break;
@@ -96,6 +103,9 @@ export class SkillspageComponent implements OnInit, AfterViewChecked {
     return {
       labels: skillNames,
       datasets: [{
+        backgroundColor: 'rgba(0, 188, 212, 0.5)',
+        borderColor: '#00bcd4',
+        pointBackgroundColor: '#00bcd4',
         data: skillNames.map(item => rawData[item])
       }]
     };

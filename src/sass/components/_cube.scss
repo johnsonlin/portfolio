@@ -100,7 +100,14 @@ $nothing-rotation: rotateX(180deg);
     position: relative;
 
     &__handle {
+      opacity: 0;
       transition: opacity .3s ease;
+      pointer-events: none;
+
+      &--visible {
+        opacity: 1;
+        pointer-events: auto;
+      }
     }
 
     &__rotate-up {
@@ -202,7 +209,7 @@ $nothing-rotation: rotateX(180deg);
 
     &__nothing {
       transform: $nothing-rotation translateZ($cube-size-mobile / 2);
-      display: block;
+      display: flex;
       text-align: center;
 
       @include screenTablet {
