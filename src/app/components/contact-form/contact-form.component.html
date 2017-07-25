@@ -1,8 +1,14 @@
 <form #contactForm="ngForm" name="contactInfo" (ngSubmit)="submitForm(contactForm)">
+  <div class="contact-form__successful" *ngIf="submitSuccessful; else elseBlock">
+    <md-icon class="contact-form__tick">check_circle</md-icon>
+    Sent! I'll be in touch shortly.
+    <md-icon class="contact-form__smile">sentiment_very_satisfied</md-icon>
+  </div>
+
   <ng-template #elseBlock>
     <md-progress-bar
       mode="indeterminate"
-      [style.display]="(submitting && !(submitSuccessful || submitError)) ? 'block' : 'none'">
+      [style.display]="submitting ? 'block' : 'none'">
     </md-progress-bar>
     <p class="contact-form__error" *ngIf="submitError">Something went wrong. Please try again.</p>
     <p>
@@ -40,18 +46,22 @@
     </p>
 
     <p>
+      <re-captcha
+        [(ngModel)]="captcha"
+        name="captcha"
+        required
+        [siteKey]="captchaKey"
+        #captchaControl="ngModel">
+      </re-captcha>
+    </p>
+
+    <p>
       <button
         md-raised-button type="submit"
-        [disabled]="submitting && !(submitSuccessful || submitError)">
+        [disabled]="submitting">
         Submit
       </button>
       <button md-button type="reset">Reset</button>
     </p>
   </ng-template>
-
-  <div class="contact-form__successful" *ngIf="submitSuccessful; else elseBlock">
-    <md-icon class="contact-form__tick">check_circle</md-icon>
-    Sent! I'll be in touch shortly.
-    <md-icon class="contact-form__smile">sentiment_very_satisfied</md-icon>
-  </div>
 </form>

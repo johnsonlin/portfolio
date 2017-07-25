@@ -3,6 +3,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { RecaptchaModule } from 'ng-recaptcha';
+import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import { MaterialModule } from './material/material.module';
 import { AppRoutesModule } from './app-routes/app-routes.module';
@@ -31,6 +33,8 @@ import { ContactpageComponent } from './pages/contactpage/contact.component';
     MobileNavMenuComponent
   ],
   imports: [
+    RecaptchaModule.forRoot(),
+    RecaptchaFormsModule,
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,

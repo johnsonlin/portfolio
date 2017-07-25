@@ -7,6 +7,8 @@ export const SKILLS_API = 'https://api.mlab.com/api/1/databases/portfolio/collec
 
 export const SEND_MESSAGE_API = `https://qomputech-prod.apigee.net/johnsonlin-service/contact?apikey=${API_KEY}`;
 
+export const CAPTCHA_KEY = '6LeFnSkUAAAAAPNv1DcQ3TOWRfSrCo9Zb41kqQqh';
+
 export const GRID_COLS_DESKTOP = 4;
 
 export const GRID_COLS_MOBILE = 2;
