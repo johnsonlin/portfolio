@@ -80,7 +80,8 @@ $nothing-rotation: rotateX(180deg);
   .cube-container {
     @include size($cube-size-mobile);
     cursor: pointer;
-    margin: 50px auto;
+    margin: auto;
+    padding: 50px 0;
     perspective: 1750px;
     user-select: none;
 

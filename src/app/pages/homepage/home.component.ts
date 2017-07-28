@@ -6,7 +6,8 @@ declare const Modernizr: any;
 
 @Component({
   selector: 'app-homepage',
-  templateUrl: './home.component.html'
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss']
 })
 export class HomepageComponent implements OnInit {
   rotateX = 58;
