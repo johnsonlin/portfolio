@@ -18,7 +18,7 @@ export class HomepageComponent implements OnInit {
   routeChanging$: Observable<NavigationStart>;
   @ViewChild('cube') cube: ElementRef;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private elm: ElementRef) {}
 
   ngOnInit() {
     if (Modernizr.csstransforms3d && Modernizr.preserve3d) {
@@ -30,9 +30,9 @@ export class HomepageComponent implements OnInit {
     this.cube.nativeElement.style.transform = `rotateX(${this.rotateX}deg) rotateY(${this.rotateY}deg) rotateZ(${this.rotateZ}deg)`;
 
     this.routeChanging$ = this.router.events.filter(e => e instanceof NavigationStart);
-    const mousedown$ = Observable.fromEvent(document, 'mousedown').takeUntil(this.routeChanging$);
-    const mousemove$ = Observable.fromEvent(document, 'mousemove').takeUntil(this.routeChanging$);
-    const mouseup$ = Observable.fromEvent(document, 'mouseup').takeUntil(this.routeChanging$);
+    const mousedown$ = Observable.fromEvent(this.elm.nativeElement, 'mousedown').takeUntil(this.routeChanging$);
+    const mousemove$ = Observable.fromEvent(this.elm.nativeElement, 'mousemove').takeUntil(this.routeChanging$);
+    const mouseup$ = Observable.fromEvent(this.elm.nativeElement, 'mouseup').takeUntil(this.routeChanging$);
     const mousedrag$ = mousedown$.flatMap(() => mousemove$.takeUntil(mouseup$)).takeUntil(this.routeChanging$);
 
     mousedown$.subscribe((e: MouseEvent) => this.moveStart(e.x, e.y));
@@ -44,14 +44,16 @@ export class HomepageComponent implements OnInit {
 
   bindTouchEvents() {
     if (Modernizr.touchevents) {
-      const touchstart$ = Observable.fromEvent(document, 'touchstart').takeUntil(this.routeChanging$);
-      const touchmove$ = Observable.fromEvent(document, 'touchmove').takeUntil(this.routeChanging$);
-      const touchend$ = Observable.fromEvent(document, 'touchend').takeUntil(this.routeChanging$);
+      const touchstart$ = Observable.fromEvent(this.elm.nativeElement, 'touchstart').takeUntil(this.routeChanging$);
+      const touchmove$ = Observable.fromEvent(this.elm.nativeElement, 'touchmove').takeUntil(this.routeChanging$);
+      const touchend$ = Observable.fromEvent(this.elm.nativeElement, 'touchend').takeUntil(this.routeChanging$);
 
       touchstart$.subscribe((e: TouchEvent) => {
+        e.stopPropagation();
         this.moveStart(e.touches[0].clientX, e.touches[0].clientY);
       });
       touchmove$.subscribe((e: TouchEvent) => {
+        e.stopPropagation();
         this.rotateCube(e.touches[0].clientX, e.touches[0].clientY);
       });
       touchend$.subscribe((this.moveEnd.bind(this)));
