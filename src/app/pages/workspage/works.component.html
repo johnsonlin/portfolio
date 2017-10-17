@@ -1,7 +1,7 @@
 <h1>Works</h1>
-<md-progress-bar mode="indeterminate" [style.display]="projects.length ? 'none' : 'block'"></md-progress-bar>
-<md-grid-list [cols]="gridSettings.cols" rowHeight="200px" *ngIf="projects.length">
-  <md-grid-tile *ngFor="let project of projects">
+<mat-progress-bar mode="indeterminate" [style.display]="projects.length ? 'none' : 'block'"></mat-progress-bar>
+<mat-grid-list [cols]="gridSettings.cols" rowHeight="200px" *ngIf="projects.length">
+  <mat-grid-tile *ngFor="let project of projects">
     <app-project-tile [project]="project" (click)="showProjectDetails(project)"></app-project-tile>
-  </md-grid-tile>
-</md-grid-list>
+  </mat-grid-tile>
+</mat-grid-list>

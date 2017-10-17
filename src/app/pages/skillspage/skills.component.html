@@ -1,5 +1,5 @@
 <h1>Skills</h1>
-<md-progress-bar mode="indeterminate" [style.display]="skillsets.length ? 'none' : 'block'"></md-progress-bar>
+<mat-progress-bar mode="indeterminate" [style.display]="skillsets.length ? 'none' : 'block'"></mat-progress-bar>
 <div class="skillset-container" *ngIf="skillsets.length">
   <section class="skillset" *ngFor="let skillset of skillsets">
     <h2>{{skillset.name}}</h2>

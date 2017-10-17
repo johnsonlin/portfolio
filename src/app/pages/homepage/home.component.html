@@ -38,26 +38,26 @@
 
 <div class="cube-control">
   <button md-mini-fab (click)="controlVisible = !controlVisible">
-    <md-icon>3d_rotation</md-icon>
+    <mat-icon>3d_rotation</mat-icon>
   </button>
   <button md-mini-fab class="cube-control__handle cube-control__rotate-up"
           [ngClass]="{'cube-control__handle--visible': controlVisible}"
           (click)="rotateUp()">
-    <md-icon>keyboard_arrow_up</md-icon>
+    <mat-icon>keyboard_arrow_up</mat-icon>
   </button>
   <button md-mini-fab class="cube-control__handle cube-control__rotate-right"
           [ngClass]="{'cube-control__handle--visible': controlVisible}"
           (click)="rotateRight()">
-    <md-icon>keyboard_arrow_right</md-icon>
+    <mat-icon>keyboard_arrow_right</mat-icon>
   </button>
   <button md-mini-fab class="cube-control__handle cube-control__rotate-down"
           [ngClass]="{'cube-control__handle--visible': controlVisible}"
           (click)="rotateDown()">
-    <md-icon>keyboard_arrow_down</md-icon>
+    <mat-icon>keyboard_arrow_down</mat-icon>
   </button>
   <button md-mini-fab class="cube-control__handle cube-control__rotate-left"
           [ngClass]="{'cube-control__handle--visible': controlVisible}"
           (click)="rotateLeft()">
-    <md-icon>keyboard_arrow_left</md-icon>
+    <mat-icon>keyboard_arrow_left</mat-icon>
   </button>
 </div>

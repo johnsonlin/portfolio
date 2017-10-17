@@ -10,7 +10,7 @@
       "assets": [
         "assets",
         "favicon.ico",
-        "_redirects"
+        { "glob": "**/*", "input": "./platform-assets", "output": "./" }
       ],
       "index": "index.html",
       "main": "main.ts",

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
-import { MdDialog } from '@angular/material';
+import { MatDialog } from '@angular/material';
 import { Observable, Subscription } from 'rxjs/Rx';
 
 import { MOBILE_BREAK_POINT, GRID_COLS_DESKTOP, GRID_COLS_MOBILE } from '../../app-constants';
@@ -18,9 +18,9 @@ import { ProjectDialogComponent } from '../../components/project-dialog/project-
 export class WorkspageComponent implements OnInit {
   projects: ProjectModel[] = [];
   gridSettings: any = {cols: GRID_COLS_MOBILE};
-  routeChanging$: Observable<NavigationStart>;
+  routeChanging$: Observable<any>;
 
-  constructor(private service: WorksService, private router: Router, private dialog: MdDialog) {}
+  constructor(private service: WorksService, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit() {
     this.service.getWorks()

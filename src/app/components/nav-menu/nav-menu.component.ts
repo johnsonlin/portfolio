@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MdSidenav } from '@angular/material';
+import { MatSidenav } from '@angular/material';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,7 +7,7 @@ import { MdSidenav } from '@angular/material';
   styleUrls: ['./nav-menu.component.scss']
 })
 export class NavMenuComponent implements OnInit {
-  @Input() sidenav: MdSidenav;
+  @Input() sidenav: MatSidenav;
 
   constructor() { }
 

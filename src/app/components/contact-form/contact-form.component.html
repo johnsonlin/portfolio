@@ -1,48 +1,48 @@
 <form #contactForm="ngForm" name="contactInfo" (ngSubmit)="submitForm(contactForm)">
   <div class="contact-form__successful" *ngIf="submitSuccessful; else elseBlock">
-    <md-icon class="contact-form__tick">check_circle</md-icon>
+    <mat-icon class="contact-form__tick">check_circle</mat-icon>
     Sent! I'll be in touch shortly.
-    <md-icon class="contact-form__smile">sentiment_very_satisfied</md-icon>
+    <mat-icon class="contact-form__smile">sentiment_very_satisfied</mat-icon>
   </div>
 
   <ng-template #elseBlock>
-    <md-progress-bar
+    <mat-progress-bar
       mode="indeterminate"
       [style.display]="submitting ? 'block' : 'none'">
-    </md-progress-bar>
+    </mat-progress-bar>
     <p class="contact-form__error" *ngIf="submitError">Something went wrong. Please try again.</p>
     <p>
-      <md-input-container>
+      <mat-input-container>
         <input
           type="text" mdInput placeholder="Full Name" name="fullName"
           required [minlength]="3" [(ngModel)]="contactInfo.fullName" #fullName>
-        <md-error [hidden]="fullName.invalid">
+        <mat-error [hidden]="fullName.invalid">
           Please enter your full name containing at lease <strong>3 characters</strong>
-        </md-error>
-      </md-input-container>
+        </mat-error>
+      </mat-input-container>
     </p>
 
     <p>
-      <md-input-container>
+      <mat-input-container>
         <input
           type="text" mdInput placeholder="Email" name="email"
           required email [(ngModel)]="contactInfo.email" #email>
-        <md-error [hidden]="email.invalid">
+        <mat-error [hidden]="email.invalid">
           Please enter a valid <strong>email</strong>
-        </md-error>
-      </md-input-container>
+        </mat-error>
+      </mat-input-container>
     </p>
 
     <p>
-      <md-input-container>
+      <mat-input-container>
         <textarea
           mdInput placeholder="Message" name="message" cols="30" rows="10" maxlength="140"
           required [(ngModel)]="contactInfo.message" #message></textarea>
-        <md-hint align="end">{{message.value.length}} / 140</md-hint>
-        <md-error [hidden]="message.invalid">
+        <mat-hint align="end">{{message.value.length}} / 140</mat-hint>
+        <mat-error [hidden]="message.invalid">
           Please enter your <strong>message</strong>
-        </md-error>
-      </md-input-container>
+        </mat-error>
+      </mat-input-container>
     </p>
 
     <p>

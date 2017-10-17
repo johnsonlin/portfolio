@@ -16,7 +16,7 @@ export class HomepageComponent implements OnInit {
   mouseStartX = 0;
   mouseStartY = 0;
   controlVisible = false;
-  routeChanging$: Observable<NavigationStart>;
+  routeChanging$: Observable<any>;
   @ViewChild('cube') cube: ElementRef;
 
   constructor(private router: Router, private elm: ElementRef) {}
