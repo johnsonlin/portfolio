@@ -37,25 +37,25 @@
 </div>
 
 <div class="cube-control">
-  <button md-mini-fab (click)="controlVisible = !controlVisible">
+  <button mat-mini-fab (click)="controlVisible = !controlVisible">
     <mat-icon>3d_rotation</mat-icon>
   </button>
-  <button md-mini-fab class="cube-control__handle cube-control__rotate-up"
+  <button mat-mini-fab class="cube-control__handle cube-control__rotate-up"
           [ngClass]="{'cube-control__handle--visible': controlVisible}"
           (click)="rotateUp()">
     <mat-icon>keyboard_arrow_up</mat-icon>
   </button>
-  <button md-mini-fab class="cube-control__handle cube-control__rotate-right"
+  <button mat-mini-fab class="cube-control__handle cube-control__rotate-right"
           [ngClass]="{'cube-control__handle--visible': controlVisible}"
           (click)="rotateRight()">
     <mat-icon>keyboard_arrow_right</mat-icon>
   </button>
-  <button md-mini-fab class="cube-control__handle cube-control__rotate-down"
+  <button mat-mini-fab class="cube-control__handle cube-control__rotate-down"
           [ngClass]="{'cube-control__handle--visible': controlVisible}"
           (click)="rotateDown()">
     <mat-icon>keyboard_arrow_down</mat-icon>
   </button>
-  <button md-mini-fab class="cube-control__handle cube-control__rotate-left"
+  <button mat-mini-fab class="cube-control__handle cube-control__rotate-left"
           [ngClass]="{'cube-control__handle--visible': controlVisible}"
           (click)="rotateLeft()">
     <mat-icon>keyboard_arrow_left</mat-icon>

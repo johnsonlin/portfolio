@@ -2,7 +2,7 @@
 @import '../../../sass/variables';
 @import '../../../sass/mixins';
 
-md-input-container, md-progress-bar {
+mat-input-container, mat-progress-bar {
   width: 100%;
 
   @include screenAboveMobile {

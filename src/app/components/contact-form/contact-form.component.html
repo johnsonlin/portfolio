@@ -14,7 +14,7 @@
     <p>
       <mat-input-container>
         <input
-          type="text" mdInput placeholder="Full Name" name="fullName"
+          type="text" matInput placeholder="Full Name" name="fullName"
           required [minlength]="3" [(ngModel)]="contactInfo.fullName" #fullName>
         <mat-error [hidden]="fullName.invalid">
           Please enter your full name containing at lease <strong>3 characters</strong>
@@ -25,7 +25,7 @@
     <p>
       <mat-input-container>
         <input
-          type="text" mdInput placeholder="Email" name="email"
+          type="text" matInput placeholder="Email" name="email"
           required email [(ngModel)]="contactInfo.email" #email>
         <mat-error [hidden]="email.invalid">
           Please enter a valid <strong>email</strong>
@@ -36,7 +36,7 @@
     <p>
       <mat-input-container>
         <textarea
-          mdInput placeholder="Message" name="message" cols="30" rows="10" maxlength="140"
+          matInput placeholder="Message" name="message" cols="30" rows="10" maxlength="140"
           required [(ngModel)]="contactInfo.message" #message></textarea>
         <mat-hint align="end">{{message.value.length}} / 140</mat-hint>
         <mat-error [hidden]="message.invalid">
@@ -57,11 +57,11 @@
 
     <p>
       <button
-        md-raised-button type="submit"
+        mat-raised-button type="submit"
         [disabled]="submitting">
         Submit
       </button>
-      <button md-button type="reset">Reset</button>
+      <button mat-button type="reset">Reset</button>
     </p>
   </ng-template>
 </form>
