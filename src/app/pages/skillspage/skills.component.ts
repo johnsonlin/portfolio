@@ -31,7 +31,7 @@ export class SkillspageComponent implements OnInit, AfterViewChecked {
       })
       .catch((err) => {
         console.log(err);
-      })
+      });
   }
 
   ngAfterViewChecked() {
