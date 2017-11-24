@@ -7,7 +7,7 @@ import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import { MaterialModule } from './material/material.module';
-import { AppRoutesModule } from './app-routes/app-routes.module';
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ContactFormComponent } from './components/contact-form/contact-form.component';
 import { ProjectDialogComponent } from './components/project-dialog/project-dialog.component';
@@ -40,7 +40,7 @@ import { ContactpageComponent } from './pages/contactpage/contact.component';
     FormsModule,
     HttpClientModule,
     MaterialModule,
-    AppRoutesModule
+    AppRoutingModule
   ],
   entryComponents: [
     ProjectDialogComponent
