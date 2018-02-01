@@ -1,5 +1,5 @@
-import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
-import Chart from 'chart.js';
+import { AfterViewChecked, Component, ElementRef, OnInit } from '@angular/core';
+import * as Chart from 'chart.js';
 
 import { SkillsService } from './skills.service';
 
