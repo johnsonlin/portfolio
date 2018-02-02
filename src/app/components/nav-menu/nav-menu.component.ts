@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+import { Store } from '@ngrx/store';
+import { ToggleSidenav } from '../../actions/ui';
 
 @Component({
   selector: 'app-nav-menu',
@@ -7,11 +8,12 @@ import { MatSidenav } from '@angular/material';
   styleUrls: ['./nav-menu.component.scss']
 })
 export class NavMenuComponent implements OnInit {
-  @Input() sidenav: MatSidenav;
-
-  constructor() { }
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
   }
 
+  toggleSidenav() {
+    this.store.dispatch(new ToggleSidenav());
+  }
 }

@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, NavigationStart } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { Observable, Subscription } from 'rxjs/Rx';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/rx';
+import { filter, map } from 'rxjs/operators';
 
 import { MOBILE_BREAK_POINT, GRID_COLS_DESKTOP, GRID_COLS_MOBILE } from '../../app-constants';
 import { ProjectModel } from '../../models/project.model';
 import { WorksService } from './works.service';
 import { ProjectDialogComponent } from '../../components/project-dialog/project-dialog.component';
+import { LoadWorks } from '../../actions/works';
 
 @Component({
   selector: 'app-workspage',
@@ -19,17 +22,23 @@ export class WorkspageComponent implements OnInit {
   projects: ProjectModel[] = [];
   gridSettings: any = {cols: GRID_COLS_MOBILE};
   routeChanging$: Observable<any>;
+  worksLoading$: Observable<boolean>;
+  works$: Observable<ProjectModel[]>;
+  worksLoadError$: Observable<string>;
 
-  constructor(private service: WorksService, private router: Router, private dialog: MatDialog) {}
+  constructor(private store: Store<any>, private router: Router, private dialog: MatDialog) {}
 
   ngOnInit() {
-    this.service.getWorks()
-      .then(projects => {
-        this.projects = projects;
-      });
+    this.routeChanging$ = this.router.events.pipe(filter(e => e instanceof NavigationStart));
+    this.worksLoading$ = this.store.select('works').pipe(map(state => state.worksLoading));
+    this.works$ = this.store.select('works').pipe(map(state => state.works));
+    this.worksLoadError$ = this.store.select('works').pipe(map(state => state.worksLoadError));
 
-    this.routeChanging$ = this.router.events.filter(e => e instanceof NavigationStart);
+    this.setupGrid();
+    this.store.dispatch(new LoadWorks());
+  }
 
+  setupGrid() {
     Observable.merge(
       Observable.of(window.innerWidth),
       Observable.fromEvent<UIEvent>(window, 'resize').map(() => window.innerWidth)

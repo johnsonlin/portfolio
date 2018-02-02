@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/rx';
 
 declare const Modernizr: any;
 
@@ -10,6 +10,7 @@ declare const Modernizr: any;
   styleUrls: ['./home.component.scss']
 })
 export class HomepageComponent implements OnInit {
+  @ViewChild('cube') cube: ElementRef;
   rotateX = 58;
   rotateY = 0;
   rotateZ = 46;
@@ -17,7 +18,6 @@ export class HomepageComponent implements OnInit {
   mouseStartY = 0;
   controlVisible = false;
   routeChanging$: Observable<any>;
-  @ViewChild('cube') cube: ElementRef;
 
   constructor(private router: Router, private elm: ElementRef) {}
 
@@ -29,8 +29,13 @@ export class HomepageComponent implements OnInit {
 
   cubeTransform() {
     this.cube.nativeElement.style.transform = `rotateX(${this.rotateX}deg) rotateY(${this.rotateY}deg) rotateZ(${this.rotateZ}deg)`;
-
     this.routeChanging$ = this.router.events.filter(e => e instanceof NavigationStart);
+
+    this.bindMouseEvents();
+    this.bindTouchEvents();
+  }
+
+  bindMouseEvents() {
     const mousedown$ = Observable.fromEvent(this.elm.nativeElement, 'mousedown').takeUntil(this.routeChanging$);
     const mousemove$ = Observable.fromEvent(this.elm.nativeElement, 'mousemove').takeUntil(this.routeChanging$);
     const mouseup$ = Observable.fromEvent(this.elm.nativeElement, 'mouseup').takeUntil(this.routeChanging$);
@@ -39,8 +44,6 @@ export class HomepageComponent implements OnInit {
     mousedown$.subscribe((e: MouseEvent) => this.moveStart(e.x, e.y));
     mousedrag$.subscribe((e: MouseEvent) => this.rotateCube(e.x, e.y));
     mouseup$.subscribe(this.moveEnd.bind(this));
-
-    this.bindTouchEvents();
   }
 
   bindTouchEvents() {

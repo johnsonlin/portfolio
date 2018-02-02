@@ -3,9 +3,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { RecaptchaModule } from 'ng-recaptcha';
 import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
-import { StoreModule } from '@ngrx/store';
 
 import { MaterialModule } from './material/material.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +22,10 @@ import { SkillspageComponent } from './pages/skillspage/skills.component';
 import { ContactpageComponent } from './pages/contactpage/contact.component';
 
 import { reducers } from './reducers';
+import { environment } from '../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { WorksEffects } from './effects/works';
+import { WorksService } from './pages/workspage/works.service';
 
 @NgModule({
   declarations: [
@@ -42,14 +47,18 @@ import { reducers } from './reducers';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
+    !environment.production ? StoreDevtoolsModule.instrument() : [],
     StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([WorksEffects]),
     MaterialModule,
     AppRoutingModule
   ],
   entryComponents: [
     ProjectDialogComponent
   ],
-  providers: [],
+  providers: [
+    WorksService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
