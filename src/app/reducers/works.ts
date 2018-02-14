@@ -21,7 +21,8 @@ export function reducer(state = initialState, action: Actions) {
       return {
         ...state,
         worksLoading: false,
-        worksLoaded: true
+        worksLoaded: true,
+        works: action.payload
       };
 
     case LOAD_WORKS_ERROR:

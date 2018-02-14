@@ -1,7 +1,11 @@
 import {Component, OnInit} from '@angular/core';
+import { Store } from '@ngrx/store';
 
 import {ContactService} from './contact.service';
 import {ContactInfoModel} from '../../models/contact-info.model';
+import { SendMessage } from '../../actions/contact';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-contactpage',
@@ -11,22 +15,19 @@ import {ContactInfoModel} from '../../models/contact-info.model';
   ]
 })
 export class ContactpageComponent implements OnInit {
-  submitSuccessful = false;
-  submitError: any;
+  messageSending$: Observable<boolean>;
+  messageSent$: Observable<boolean>;
+  messageSendError$: Observable<string>;
 
-  constructor(private service: ContactService) {}
+  constructor(private store: Store<any>) {}
 
   ngOnInit() {
-
+    this.messageSending$ = this.store.select('contact').pipe(map(state => state.messageSending));
+    this.messageSent$ = this.store.select('contact').pipe(map(state => state.messageSent));
+    this.messageSendError$ = this.store.select('contact').pipe(map(state => state.messageSendError));
   }
 
   submitForm(formData: ContactInfoModel) {
-    this.service.sendMessage(formData.fullName, formData.email, formData.message)
-      .then(() => {
-        this.submitSuccessful = true;
-      })
-      .catch((error) => {
-        this.submitError = error;
-      });
+    this.store.dispatch(new SendMessage(formData));
   }
 }

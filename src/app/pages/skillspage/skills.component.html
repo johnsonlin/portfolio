@@ -1,8 +1,3 @@
 <h1>Skills</h1>
-<mat-progress-bar mode="indeterminate" [style.display]="skillsets.length ? 'none' : 'block'"></mat-progress-bar>
-<div class="skillset-container" *ngIf="skillsets.length">
-  <section class="skillset" *ngFor="let skillset of skillsets">
-    <h2>{{skillset.name}}</h2>
-    <div class="skillset__canvas"></div>
-  </section>
-</div>
+<mat-progress-bar mode="indeterminate" *ngIf="skillsLoading$ | async"></mat-progress-bar>
+<app-skills-matrix *ngIf="!(skillsLoading$ | async)" [skillsets]="skills$ | async"></app-skills-matrix>

@@ -1,5 +1,5 @@
 export class ContactInfoModel {
-  fullName: string;
+  from: string;
   email: string;
   message: string;
 }

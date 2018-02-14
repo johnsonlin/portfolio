@@ -1,7 +1,3 @@
 <h1>Works</h1>
-<mat-progress-bar mode="indeterminate" [style.display]="projects.length ? 'none' : 'block'"></mat-progress-bar>
-<mat-grid-list [cols]="gridSettings.cols" rowHeight="200px" *ngIf="projects.length">
-  <mat-grid-tile *ngFor="let project of projects">
-    <app-project-tile [project]="project" (click)="showProjectDetails(project)"></app-project-tile>
-  </mat-grid-tile>
-</mat-grid-list>
+<mat-progress-bar mode="indeterminate" *ngIf="worksLoading$ | async"></mat-progress-bar>
+<app-project-grid *ngIf="!(worksLoading$ | async)" [projectList]="projects$ | async"></app-project-grid>

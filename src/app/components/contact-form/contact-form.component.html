@@ -14,9 +14,9 @@
     <p>
       <mat-input-container>
         <input
-          type="text" matInput placeholder="Full Name" name="fullName"
-          required [minlength]="3" [(ngModel)]="contactInfo.fullName" #fullName>
-        <mat-error [hidden]="fullName.invalid">
+          type="text" matInput placeholder="Full Name" name="from"
+          required [minlength]="3" [(ngModel)]="contactInfo.from" #from>
+        <mat-error [hidden]="from.invalid">
           Please enter your full name containing at lease <strong>3 characters</strong>
         </mat-error>
       </mat-input-container>
