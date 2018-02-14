@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { Store } from '@ngrx/store';
-import { Observable, Subject } from 'rxjs/rx';
+import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import { map, distinctUntilChanged, takeUntil } from 'rxjs/operators';
 
 import { CloseSidenav } from './actions/ui';
