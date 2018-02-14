@@ -1,2 +1,4 @@
 <h1>Contact</h1>
-<app-contact-form (onFormSubmit)="submitForm($event)" [submitSuccessful]="submitSuccessful" [submitError]="submitError"></app-contact-form>
+<app-contact-form
+  (onFormSubmit)="submitForm($event)" [submitSuccessful]="messageSent$ | async" [submitError]="messageSendError$ | async">
+</app-contact-form>

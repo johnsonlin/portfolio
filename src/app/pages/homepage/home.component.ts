@@ -1,6 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs/Observable';
+import { filter, switchMap, takeUntil } from 'rxjs/operators';
+import { fromEvent } from 'rxjs/observable/fromEvent';
 
 declare const Modernizr: any;
 
@@ -10,6 +12,7 @@ declare const Modernizr: any;
   styleUrls: ['./home.component.scss']
 })
 export class HomepageComponent implements OnInit {
+  @ViewChild('cube') cube: ElementRef;
   rotateX = 58;
   rotateY = 0;
   rotateZ = 46;
@@ -17,7 +20,6 @@ export class HomepageComponent implements OnInit {
   mouseStartY = 0;
   controlVisible = false;
   routeChanging$: Observable<any>;
-  @ViewChild('cube') cube: ElementRef;
 
   constructor(private router: Router, private elm: ElementRef) {}
 
@@ -29,25 +31,28 @@ export class HomepageComponent implements OnInit {
 
   cubeTransform() {
     this.cube.nativeElement.style.transform = `rotateX(${this.rotateX}deg) rotateY(${this.rotateY}deg) rotateZ(${this.rotateZ}deg)`;
+    this.routeChanging$ = this.router.events.pipe(filter(e => e instanceof NavigationStart));
 
-    this.routeChanging$ = this.router.events.filter(e => e instanceof NavigationStart);
-    const mousedown$ = Observable.fromEvent(this.elm.nativeElement, 'mousedown').takeUntil(this.routeChanging$);
-    const mousemove$ = Observable.fromEvent(this.elm.nativeElement, 'mousemove').takeUntil(this.routeChanging$);
-    const mouseup$ = Observable.fromEvent(this.elm.nativeElement, 'mouseup').takeUntil(this.routeChanging$);
-    const mousedrag$ = mousedown$.flatMap(() => mousemove$.takeUntil(mouseup$)).takeUntil(this.routeChanging$);
+    this.bindMouseEvents();
+    this.bindTouchEvents();
+  }
+
+  bindMouseEvents() {
+    const mousedown$ = fromEvent(this.elm.nativeElement, 'mousedown').pipe(takeUntil(this.routeChanging$));
+    const mousemove$ = fromEvent(this.elm.nativeElement, 'mousemove').pipe(takeUntil(this.routeChanging$));
+    const mouseup$ = fromEvent(this.elm.nativeElement, 'mouseup').pipe(takeUntil(this.routeChanging$));
+    const mousedrag$ = mousedown$.pipe(switchMap(() => mousemove$.pipe(takeUntil(mouseup$))), takeUntil(this.routeChanging$));
 
     mousedown$.subscribe((e: MouseEvent) => this.moveStart(e.x, e.y));
     mousedrag$.subscribe((e: MouseEvent) => this.rotateCube(e.x, e.y));
     mouseup$.subscribe(this.moveEnd.bind(this));
-
-    this.bindTouchEvents();
   }
 
   bindTouchEvents() {
     if (Modernizr.touchevents) {
-      const touchstart$ = Observable.fromEvent(this.elm.nativeElement, 'touchstart').takeUntil(this.routeChanging$);
-      const touchmove$ = Observable.fromEvent(this.elm.nativeElement, 'touchmove').takeUntil(this.routeChanging$);
-      const touchend$ = Observable.fromEvent(this.elm.nativeElement, 'touchend').takeUntil(this.routeChanging$);
+      const touchstart$ = fromEvent(this.elm.nativeElement, 'touchstart').pipe(takeUntil(this.routeChanging$));
+      const touchmove$ = fromEvent(this.elm.nativeElement, 'touchmove').pipe(takeUntil(this.routeChanging$));
+      const touchend$ = fromEvent(this.elm.nativeElement, 'touchend').pipe(takeUntil(this.routeChanging$));
 
       touchstart$.subscribe((e: TouchEvent) => {
         e.stopPropagation();

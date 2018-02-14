@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatSidenav } from '@angular/material';
+import { Store } from '@ngrx/store';
+import { CloseSidenav } from '../../actions/ui';
 
 @Component({
   selector: 'app-mobile-nav-menu',
@@ -7,11 +8,12 @@ import { MatSidenav } from '@angular/material';
   styleUrls: ['./mobile-nav-menu.component.scss']
 })
 export class MobileNavMenuComponent implements OnInit {
-  @Input() sidenav: MatSidenav;
-
-  constructor() { }
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
   }
 
+  closeSidenav() {
+    this.store.dispatch(new CloseSidenav());
+  }
 }

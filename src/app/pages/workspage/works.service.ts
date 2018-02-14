@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import 'rxjs/add/operator/toPromise';
+import { Observable } from 'rxjs/Observable';
+import { catchError, map } from 'rxjs/operators';
 
 import { ProjectModel } from '../../models/project.model';
 import { WORKS_API } from '../../app-constants';
@@ -11,12 +12,8 @@ export class WorksService {
 
   constructor(private http: HttpClient) {}
 
-  getWorks(): Promise<ProjectModel[]> {
-    return this.http.get(this.worksUrl)
-      .toPromise()
-      .then((response: any) => response.posts as ProjectModel[])
-      .catch(error => {
-        return Promise.reject(error.message || error);
-      });
+  getWorks(): Observable<ProjectModel[]> {
+    return this.http.get<ProjectModel[]>(this.worksUrl)
+      .pipe(map((response: any) => response.posts as ProjectModel[]));
   }
 }
