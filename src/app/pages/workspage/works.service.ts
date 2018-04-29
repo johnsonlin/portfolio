@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
-import { catchError, map } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { ProjectModel } from '../../models/project.model';
 import { WORKS_API } from '../../app-constants';

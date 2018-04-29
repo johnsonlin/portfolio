@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import * as skills from '../actions/skills';
@@ -19,7 +20,7 @@ export class SkillsEffects {
       switchMap(() => this.skillsService.getSkills()
         .pipe(
           map(skillset => new LoadSkillsSuccess(skillset)),
-          catchError(err => Observable.of(new LoadSkillsError(err)))
+          catchError(err => of(new LoadSkillsError(err)))
         )
       )
     );

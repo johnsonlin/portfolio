@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import * as contact from '../actions/contact';
@@ -21,7 +22,7 @@ export class ContactEffects {
       switchMap(({from, email, message}: ContactInfoModel) => this.contactService.sendMessage(from, email, message)
         .pipe(
           map(() => new SendMessageSuccess()),
-          catchError(err => Observable.of(new SendMessageError(err)))
+          catchError(err => of(new SendMessageError(err)))
         )
       )
     );

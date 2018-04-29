@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, Effect } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
+import { of } from 'rxjs/observable/of';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import * as works from '../actions/works';
@@ -19,7 +20,7 @@ export class WorksEffects {
       switchMap(() => this.worksService.getWorks()
         .pipe(
           map(worksList => new LoadWorksSuccess(worksList)),
-          catchError(err => Observable.of(new LoadWorksError(err)))
+          catchError(err => of(new LoadWorksError(err)))
         )
       )
     );
