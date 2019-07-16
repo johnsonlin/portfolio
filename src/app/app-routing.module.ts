@@ -1,11 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ContactpageComponent } from './pages/contactpage/contact.component';
-import { HomepageComponent } from './pages/homepage/home.component';
-import { SkillspageComponent } from './pages/skillspage/skills.component';
-import { WorkspageComponent } from './pages/workspage/works.component';
-
 export const routes: Routes = [
   {
     path: '',
@@ -14,19 +9,19 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomepageComponent
+    loadChildren: () => import('./pages/homepage/home.module').then((mod) => mod.HomeModule)
   },
   {
     path: 'works',
-    component: WorkspageComponent
+    loadChildren: () => import('./pages/workspage/works.module').then((mod) => mod.WorksModule)
   },
   {
     path: 'skills',
-    component: SkillspageComponent
+    loadChildren: () => import('./pages/skillspage/skills.module').then((mod) => mod.SkillsModule)
   },
   {
     path: 'contact',
-    component: ContactpageComponent
+    loadChildren: () => import('./pages/contactpage/contact.module').then((mod) => mod.ContactModule)
   }
 ];
 

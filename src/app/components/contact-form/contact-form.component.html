@@ -6,10 +6,7 @@
   </div>
 
   <ng-template #elseBlock>
-    <mat-progress-bar
-      mode="indeterminate"
-      [style.display]="submitting ? 'block' : 'none'">
-    </mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" [style.display]="submitPending ? 'block' : 'none'"></mat-progress-bar>
     <p class="contact-form__error" *ngIf="submitError">Something went wrong. Please try again.</p>
     <p>
       <mat-form-field>
@@ -58,7 +55,7 @@
     <p>
       <button
         mat-raised-button type="submit"
-        [disabled]="submitting">
+        [disabled]="submitPending">
         Submit
       </button>
       <button mat-button type="reset">Reset</button>
