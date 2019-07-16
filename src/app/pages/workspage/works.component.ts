@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ProjectModel } from '../../models/project.model';
 import { LoadWorks } from '../../actions/works';
+import { ProjectModel } from '../../models/project.model';
 
 @Component({
   selector: 'app-workspage',

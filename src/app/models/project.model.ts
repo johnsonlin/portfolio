@@ -1,5 +1,6 @@
 import { PROJECT_IMAGE_WIDTH } from '../app-constants';
 
+// tslint:disable:variable-name
 export class ProjectModel {
   title: string;
   attachments?: any;

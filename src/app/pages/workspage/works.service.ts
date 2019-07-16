@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-import { ProjectModel } from '../../models/project.model';
 import { WORKS_API } from '../../app-constants';
+import { ProjectModel } from '../../models/project.model';
 
 @Injectable()
 export class WorksService {

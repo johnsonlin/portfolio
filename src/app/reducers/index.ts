@@ -1,9 +1,9 @@
 import { ActionReducerMap } from '@ngrx/store';
 
+import * as fromContact from './contact';
+import * as fromSkills from './skills';
 import * as fromUi from './ui';
 import * as fromWorks from './works';
-import * as fromSkills from './skills';
-import * as fromContact from './contact';
 
 export interface State {
   ui: any;

@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
-import {
-  MatButtonModule, MatButtonToggleModule, MatDialogModule, MatGridListModule, MatIconModule, MatInputModule,
-  MatProgressBarModule, MatSidenavModule
-} from '@angular/material';
+import { MatButtonModule } from '@angular/material/button';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatGridListModule } from '@angular/material/grid-list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSidenavModule} from '@angular/material/sidenav';
 
 @NgModule({
   imports: [
@@ -13,7 +17,7 @@ import {
     MatIconModule,
     MatInputModule,
     MatGridListModule,
-    MatDialogModule
+    MatDialogModule,
   ],
   exports: [
     MatSidenavModule,
@@ -23,8 +27,8 @@ import {
     MatIconModule,
     MatInputModule,
     MatGridListModule,
-    MatDialogModule
-  ]
+    MatDialogModule,
+  ],
 })
 export class MaterialModule {
 }

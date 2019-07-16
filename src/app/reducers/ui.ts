@@ -1,4 +1,4 @@
-import { Actions, TOGGLE_SIDENAV, CLOSE_SIDENAV, OPEN_SIDENAV } from '../actions/ui';
+import { Actions, CLOSE_SIDENAV, OPEN_SIDENAV, TOGGLE_SIDENAV } from '../actions/ui';
 
 const initialState = {
   sideNavOpened: false

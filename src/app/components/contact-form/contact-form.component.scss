@@ -2,7 +2,7 @@
 @import '../../../sass/variables';
 @import '../../../sass/mixins';
 
-mat-input-container, mat-progress-bar {
+mat-form-field, mat-progress-bar {
   width: 100%;
 
   @include screenAboveMobile {

@@ -1,14 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Event, NavigationStart, Router } from '@angular/router';
 import { MatDialog } from '@angular/material';
-import { Observable } from 'rxjs/Observable';
-import { fromEvent } from 'rxjs/observable/fromEvent';
-import { of } from 'rxjs/observable/of';
-import { merge } from 'rxjs/observable/merge';
+import { Event, NavigationStart, Router } from '@angular/router';
+import { fromEvent, merge, Observable, of } from 'rxjs';
 import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';
 
-import { ProjectModel } from '../../models/project.model';
 import { GRID_COLS_DESKTOP, GRID_COLS_MOBILE, MOBILE_BREAK_POINT } from '../../app-constants';
+import { ProjectModel } from '../../models/project.model';
 import { ProjectDialogComponent } from '../project-dialog/project-dialog.component';
 
 declare const window: Window;

@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { ContactInfoModel } from '../../models/contact-info.model';
 import { CAPTCHA_KEY } from '../../app-constants';
+import { ContactInfoModel } from '../../models/contact-info.model';
 
 @Component({
   selector: 'app-contact-form',
@@ -17,12 +17,12 @@ export class ContactFormComponent {
   captchaKey = CAPTCHA_KEY;
   @Input() submitSuccessful = false;
   @Input() submitError: any;
-  @Output() onFormSubmit = new EventEmitter();
+  @Output() formSubmit = new EventEmitter();
 
   submitForm(contactForm: NgForm) {
     if (contactForm.valid) {
       this.submitting = true;
-      this.onFormSubmit.emit(this.contactInfo);
+      this.formSubmit.emit(this.contactInfo);
     }
   }
 }

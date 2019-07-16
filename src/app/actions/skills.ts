@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 export const LOAD_SKILLS = '[SKILLS] LOAD_SKILLS';
-export const LOAD_SKILLS_SUCCESS= '[SKILLS] LOAD_SKILLS_SUCCESS';
+export const LOAD_SKILLS_SUCCESS = '[SKILLS] LOAD_SKILLS_SUCCESS';
 export const LOAD_SKILLS_ERROR = '[SKILLS] LOAD_SKILLS_ERROR';
 
 export class LoadSkills implements Action {

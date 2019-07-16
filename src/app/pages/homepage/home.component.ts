@@ -1,18 +1,17 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { fromEvent, Observable } from 'rxjs';
 import { filter, switchMap, takeUntil } from 'rxjs/operators';
-import { fromEvent } from 'rxjs/observable/fromEvent';
 
 declare const Modernizr: any;
 
 @Component({
   selector: 'app-homepage',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomepageComponent implements OnInit {
-  @ViewChild('cube') cube: ElementRef;
+  @ViewChild('cube', { static: true }) cube: ElementRef;
   rotateX = 58;
   rotateY = 0;
   rotateZ = 46;
@@ -21,7 +20,8 @@ export class HomepageComponent implements OnInit {
   controlVisible = false;
   routeChanging$: Observable<any>;
 
-  constructor(private router: Router, private elm: ElementRef) {}
+  constructor(private router: Router, private elm: ElementRef) {
+  }
 
   ngOnInit() {
     if (Modernizr.csstransforms3d && Modernizr.preserve3d) {

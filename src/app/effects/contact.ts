@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import * as contact from '../actions/contact';
-import { ContactService } from '../pages/contactpage/contact.service';
 import { SendMessageError, SendMessageSuccess } from '../actions/contact';
 import { ContactInfoModel } from '../models/contact-info.model';
+import { ContactService } from '../pages/contactpage/contact.service';
 
 @Injectable()
 export class ContactEffects {
@@ -16,8 +15,8 @@ export class ContactEffects {
 
   @Effect()
   getContact$: Observable<Action> = this.actons$
-    .ofType<contact.SendMessage>(contact.SEND_MESSAGE)
     .pipe(
+      ofType<contact.SendMessage>(contact.SEND_MESSAGE),
       map(action => action.payload),
       switchMap(({from, email, message}: ContactInfoModel) => this.contactService.sendMessage(from, email, message)
         .pipe(

@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
-import { Actions, Effect } from '@ngrx/effects';
+import { Actions, Effect, ofType } from '@ngrx/effects';
 import { Action } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
+import { Observable, of } from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 
 import * as works from '../actions/works';
-import { WorksService } from '../pages/workspage/works.service';
 import { LoadWorksError, LoadWorksSuccess } from '../actions/works';
+import { WorksService } from '../pages/workspage/works.service';
 
 @Injectable()
 export class WorksEffects {
@@ -15,8 +14,8 @@ export class WorksEffects {
 
   @Effect()
   getWorks$: Observable<Action> = this.actons$
-    .ofType<works.LoadWorks>(works.LOAD_WORKS)
     .pipe(
+      ofType<works.LoadWorks>(works.LOAD_WORKS),
       switchMap(() => this.worksService.getWorks()
         .pipe(
           map(worksList => new LoadWorksSuccess(worksList)),

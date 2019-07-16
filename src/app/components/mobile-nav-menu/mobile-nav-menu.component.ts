@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+
 import { CloseSidenav } from '../../actions/ui';
 
 @Component({

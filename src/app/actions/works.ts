@@ -1,7 +1,7 @@
 import { Action } from '@ngrx/store';
 
 export const LOAD_WORKS = '[WORKS] LOAD_WORKS';
-export const LOAD_WORKS_SUCCESS= '[WORKS] LOAD_WORKS_SUCCESS';
+export const LOAD_WORKS_SUCCESS = '[WORKS] LOAD_WORKS_SUCCESS';
 export const LOAD_WORKS_ERROR = '[WORKS] LOAD_WORKS_ERROR';
 
 export class LoadWorks implements Action {

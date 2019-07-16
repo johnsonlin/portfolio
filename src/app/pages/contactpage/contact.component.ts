@@ -1,11 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
+
+import { SendMessage } from '../../actions/contact';
+import {ContactInfoModel} from '../../models/contact-info.model';
 
 import {ContactService} from './contact.service';
-import {ContactInfoModel} from '../../models/contact-info.model';
-import { SendMessage } from '../../actions/contact';
-import { map } from 'rxjs/operators';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-contactpage',

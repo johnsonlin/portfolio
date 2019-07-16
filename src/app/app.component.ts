@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import { Subject } from 'rxjs/Subject';
-import { map, distinctUntilChanged, takeUntil } from 'rxjs/operators';
+import { Observable, Subject } from 'rxjs';
+import { distinctUntilChanged, map, takeUntil } from 'rxjs/operators';
 
 import { CloseSidenav } from './actions/ui';
 
@@ -13,7 +12,7 @@ import { CloseSidenav } from './actions/ui';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, OnDestroy {
-  @ViewChild('sidenav') sidenav: MatSidenav;
+  @ViewChild('sidenav', { static: true }) sidenav: MatSidenav;
   sideNavOpened$: Observable<boolean>;
   destroy$ = new Subject<boolean>();
 
