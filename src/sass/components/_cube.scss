@@ -112,7 +112,7 @@ $nothing-rotation: rotateX(180deg);
     }
 
     &__rotate-up {
-      @include position(absolute, null null calc(100% + 5px) null);
+      @include position(absolute, null null calc(100% + 5px) 0);
     }
 
     &__rotate-right {
@@ -120,7 +120,7 @@ $nothing-rotation: rotateX(180deg);
     }
 
     &__rotate-down {
-      @include position(absolute, calc(100% + 5px) null null null);
+      @include position(absolute, calc(100% + 5px) null null 0);
     }
 
     &__rotate-left {
