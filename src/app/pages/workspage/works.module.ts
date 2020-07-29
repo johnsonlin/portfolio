@@ -21,9 +21,6 @@ import { WorksService } from './works.service';
     ProjectTileComponent,
     ProjectGridComponent,
   ],
-  entryComponents: [
-    ProjectDialogComponent
-  ],
   imports: [
     CommonModule,
     MaterialModule,

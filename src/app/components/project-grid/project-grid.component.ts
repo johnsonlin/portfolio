@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Event, NavigationStart, Router } from '@angular/router';
 import { fromEvent, merge, Observable, of } from 'rxjs';
 import { debounceTime, filter, map, takeUntil } from 'rxjs/operators';

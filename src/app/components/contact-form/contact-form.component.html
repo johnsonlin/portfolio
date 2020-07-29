@@ -10,9 +10,10 @@
     <p class="contact-form__error" *ngIf="submitError">Something went wrong. Please try again.</p>
     <p>
       <mat-form-field>
+        <mat-label>Full Name</mat-label>
         <input
-          type="text" matInput placeholder="Full Name" name="from"
-          required minlength="2" [(ngModel)]="contactInfo.from" #from>
+          type="text" matInput name="from"
+          required minlength="2" [(ngModel)]="contactInfo.from" #from="ngModel">
         <mat-error [hidden]="from.invalid">
           Please enter your full name containing at lease <strong>2 characters</strong>
         </mat-error>
@@ -21,9 +22,10 @@
 
     <p>
       <mat-form-field>
+        <mat-label>Email</mat-label>
         <input
-          type="text" matInput placeholder="Email" name="email"
-          required email [(ngModel)]="contactInfo.email" #email>
+          type="text" matInput name="email"
+          required email [(ngModel)]="contactInfo.email" #email="ngModel">
         <mat-error [hidden]="email.invalid">
           Please enter a valid <strong>email</strong>
         </mat-error>
@@ -32,10 +34,11 @@
 
     <p>
       <mat-form-field>
+        <mat-label>Message</mat-label>
         <textarea
-          matInput placeholder="Message" name="message" cols="30" rows="10" maxlength="140"
-          required [(ngModel)]="contactInfo.message" #message></textarea>
-        <mat-hint align="end">{{message.value.length}} / 140</mat-hint>
+          matInput name="message" cols="30" rows="10" maxlength="140"
+          required [(ngModel)]="contactInfo.message" #message="ngModel"></textarea>
+        <mat-hint align="end">{{message.value?.length || 0}} / 140</mat-hint>
         <mat-error [hidden]="message.invalid">
           Please enter your <strong>message</strong>
         </mat-error>
@@ -43,19 +46,7 @@
     </p>
 
     <p>
-      <re-captcha
-        [(ngModel)]="captcha"
-        name="captcha"
-        required
-        [siteKey]="captchaKey"
-        #captchaControl="ngModel">
-      </re-captcha>
-    </p>
-
-    <p>
-      <button
-        mat-raised-button type="submit"
-        [disabled]="submitPending">
+      <button mat-raised-button type="submit" [disabled]="submitPending">
         Submit
       </button>
       <button mat-button type="reset">Reset</button>

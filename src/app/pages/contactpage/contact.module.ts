@@ -4,8 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { RecaptchaModule } from 'ng-recaptcha';
-import { RecaptchaFormsModule } from 'ng-recaptcha/forms';
 
 import { ContactFormComponent } from '../../components/contact-form/contact-form.component';
 import { ContactEffects } from '../../effects/contact';
@@ -23,8 +21,6 @@ import { ContactService } from './contact.service';
   imports: [
     CommonModule,
     FormsModule,
-    RecaptchaModule,
-    RecaptchaFormsModule,
     MaterialModule,
     StoreModule.forFeature('contact', reducer),
     EffectsModule.forFeature([ContactEffects]),

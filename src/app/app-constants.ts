@@ -5,7 +5,7 @@ export const SKILLS_API = 'https://asia-northeast1-johnsonlin-service.cloudfunct
 
 export const SEND_MESSAGE_API = 'https://asia-northeast1-johnsonlin-service.cloudfunctions.net/app/contact';
 
-export const CAPTCHA_KEY = '6LeFnSkUAAAAAPNv1DcQ3TOWRfSrCo9Zb41kqQqh';
+export const RECAPTCHA_KEY = '6LfwFLgZAAAAAJH2XQU1t2CdTRI8xyXD0om_B-fd';
 
 export const GRID_COLS_DESKTOP = 4;
 

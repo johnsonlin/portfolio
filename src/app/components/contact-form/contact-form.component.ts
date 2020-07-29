@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
-import { CAPTCHA_KEY } from '../../app-constants';
+import { RECAPTCHA_KEY } from '../../app-constants';
 import { ContactInfoModel } from '../../models/contact-info.model';
 
 @Component({
@@ -12,8 +12,7 @@ import { ContactInfoModel } from '../../models/contact-info.model';
 
 export class ContactFormComponent {
   contactInfo: ContactInfoModel = new ContactInfoModel();
-  captcha: any;
-  captchaKey = CAPTCHA_KEY;
+  reCaptchaKey = RECAPTCHA_KEY;
   @Input() submitPending = false;
   @Input() submitSuccessful = false;
   @Input() submitError: any;
