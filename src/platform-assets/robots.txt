@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
-Crawl-delay: 5
+Sitemap: https://johnsonlin.netlify.app/sitemap.xml
 Sitemap: https://johnsonlin.netlify.app/sitemap.txt
